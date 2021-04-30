@@ -1,0 +1,35 @@
+
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+
+
+
+#spring:ce:
+#  datasour
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://localhost:3302/api-login?serverTimezone=UTC&characterEncoding=UTF-8
+#    username: root
+#    password: 1111
+
+#  jpa:
+#    hibernate:
+#      ddl-auto: create
+#    properties:
+#      hibernate:
+#        format_sql:true
+#    database-platform: org.hibernate.dialect.MYSQL5InnoDBDialect
+#    database: mysql
+#  devtools:
+#    livereload:
+#      enabled: true
+server:
+  port: 8339
+
+#logging:
+#  level:
+#    org.hibernate.SQL: debug
+#    org.hibernate.type: trace
