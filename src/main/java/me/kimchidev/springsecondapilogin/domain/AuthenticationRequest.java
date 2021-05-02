@@ -2,15 +2,17 @@ package me.kimchidev.springsecondapilogin.domain;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.validation.constraints.NotEmpty;
 
 @Setter
 @Getter
+@ToString
 public class AuthenticationRequest {
     @NotEmpty
-    String principle;
+    String principal;
     @NotEmpty
-    String credential;
+    String credentials;
 
 }

@@ -1,13 +1,11 @@
 package me.kimchidev.springsecondapilogin.domain;
 
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
+@ToString
 @Entity
 @Getter
 @Table(name = "security")
