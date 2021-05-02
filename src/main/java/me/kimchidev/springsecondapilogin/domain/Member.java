@@ -8,25 +8,29 @@ import java.time.LocalDateTime;
 @ToString
 @Entity
 @Getter
-@Table(name = "security")
+@Table(name = "security_member")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Member {
 
     @Id @GeneratedValue
     @Column(name = "index_key")
-    Long id;
+    private Long id;
 
     @Column(unique = true, length = 50)
-    String memberId;
+    private String memberId;
 
     @Column(length = 500)
-    String memberPassword;
+    private String memberPassword;
 
     @Column(length = 30)
-    String userName;
+    private String userName;
 
+    @Column(name = "member_role")
+    private String role;
 
-    LocalDateTime createdAt;
+    private boolean enabled;
+
+    private LocalDateTime createdAt;
 
     @Builder
     public Member(String memberId, String memberPassword, String userName){
@@ -34,6 +38,7 @@ public class Member {
         this.memberPassword = memberPassword;
         this.userName = userName;
         this.createdAt = LocalDateTime.now();
+        this.role = "USER";
     }
 
 }
