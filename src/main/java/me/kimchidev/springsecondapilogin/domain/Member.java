@@ -38,7 +38,7 @@ public class Member {
         this.memberPassword = memberPassword;
         this.userName = userName;
         this.createdAt = LocalDateTime.now();
-        this.role = "USER";
+        this.role = "CERTIFIED_USER";
     }
 
 }

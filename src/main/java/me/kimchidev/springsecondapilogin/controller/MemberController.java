@@ -40,12 +40,15 @@ public class MemberController {
         Member member = memberService.verifyMember(authReq);
 
 
-        UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(member.getMemberId(),member.getMemberPassword());
+        Authentication token = new UsernamePasswordAuthenticationToken(member.getMemberId(),member.getMemberPassword());
         log.info("token : {}",token);
 
-        Authentication authentication = authenticationManager.authenticate(token);
-        SecurityContextHolder.getContext().setAuthentication(authentication);
 
+        Authentication authentication = authenticationManager.authenticate(token);
+        log.info("authentication : {}",authentication);
+
+
+        SecurityContextHolder.getContext().setAuthentication(authentication);
         log.info("SecurityContextHolder.getContext() : {}",SecurityContextHolder.getContext().getAuthentication());
 
 
