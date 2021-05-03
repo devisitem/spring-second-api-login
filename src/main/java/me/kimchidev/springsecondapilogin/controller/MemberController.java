@@ -9,7 +9,10 @@ import me.kimchidev.springsecondapilogin.service.MemberService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,7 +28,7 @@ import javax.validation.Valid;
 public class MemberController {
 
     private final MemberService memberService;
-
+    private final AuthenticationManager authenticationManager;
     private CustomResponse customRes;
 
 
@@ -35,6 +38,18 @@ public class MemberController {
         log.info("[ #START# POST /user/login ] : {}",authReq );
 
         Member member = memberService.verifyMember(authReq);
+
+
+        UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(member.getMemberId(),member.getMemberPassword());
+        log.info("token : {}",token);
+
+        Authentication authentication = authenticationManager.authenticate(token);
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+
+        log.info("SecurityContextHolder.getContext() : {}",SecurityContextHolder.getContext().getAuthentication());
+
+
+
 
         customRes = new CustomResponse();
         if(member != null){

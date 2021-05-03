@@ -21,7 +21,7 @@ public class MemberService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException {
         Member member = memberRepository.findById(userId);
-
+        System.out.println("[MemberService.loadUserByUsername] : ###");
         if(member == null) {
             throw new UsernameNotFoundException("존재하지 않는 아이디입니다.");
         }
@@ -30,6 +30,7 @@ public class MemberService implements UserDetailsService {
     }
 
     public void createMember(AuthenticationRequest authReq){
+
         Member member = Member.builder()
                 .memberId(authReq.getPrincipal())
                 .memberPassword(passwordEncoder.encode(authReq.getCredentials()))

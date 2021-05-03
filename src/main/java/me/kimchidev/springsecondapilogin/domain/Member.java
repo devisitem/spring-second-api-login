@@ -33,7 +33,7 @@ public class Member {
     private LocalDateTime createdAt;
 
     @Builder
-    public Member(String memberId, String memberPassword, String userName){
+    public Member(String memberId, String memberPassword, String userName, String role){
         this.memberId = memberId;
         this.memberPassword = memberPassword;
         this.userName = userName;
